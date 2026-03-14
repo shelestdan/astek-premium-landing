@@ -456,17 +456,20 @@
 
   .inner {
     grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0;
     min-height: 64px;
   }
 
   .wordmark {
     grid-column: 1;
+    min-width: 0;
     gap: 4px;
     padding: 12px 0;
   }
 
   .utilityRail {
     grid-column: 2;
+    min-width: 0;
     min-height: 64px;
     border-left: 0;
   }
@@ -477,8 +480,8 @@
 
   .menuButton,
   .inquireLink {
-    min-width: 78px;
-    padding: 0 12px;
+    min-width: 72px;
+    padding: 0 10px;
     flex: none;
   }
 
@@ -491,7 +494,7 @@
   }
 
   .wordmarkMeta {
-    max-width: 16ch;
+    max-width: 14ch;
     font-size: 0.6rem;
     line-height: 1.45;
   }
@@ -527,5 +530,33 @@
 
   .overlayMeta {
     gap: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .wordmarkMain {
+    font-size: 1.32rem;
+  }
+
+  .wordmarkMeta {
+    max-width: 12ch;
+    font-size: 0.58rem;
+    letter-spacing: 0.09em;
+  }
+
+  .menuButton,
+  .inquireLink {
+    min-width: 64px;
+    padding: 0 8px;
+    font-size: 0.66rem;
+    letter-spacing: 0.09em;
+  }
+
+  .inquireLink {
+    min-width: 86px;
+  }
+
+  .menuButtonInner {
+    gap: 6px;
   }
 }

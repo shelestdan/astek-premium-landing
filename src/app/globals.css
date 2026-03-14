@@ -33,6 +33,7 @@ html {
   scroll-behavior: auto;
   scrollbar-gutter: stable both-edges;
   background: var(--color-paper);
+  overflow-x: hidden;
 }
 
 html.lenis,
@@ -51,6 +52,8 @@ html.lenis.lenis-stopped {
 body {
   margin: 0;
   min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0)),
     var(--color-paper);
@@ -137,7 +140,8 @@ img {
 }
 
 .page-shell {
-  width: min(var(--page-max), calc(100vw - (var(--page-margin) * 2)));
+  width: min(100%, var(--page-max));
+  padding-inline: var(--page-margin);
   margin: 0 auto;
 }
 
@@ -287,10 +291,6 @@ img {
 }
 
 @media (max-width: 960px) {
-  .page-shell {
-    width: min(var(--page-max), calc(100vw - 24px));
-  }
-
   .canon-grid {
     grid-template-columns: 1fr;
   }
@@ -298,5 +298,22 @@ img {
   body::before {
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(53, 88, 162, 0.04) 100%);
+  }
+}
+
+@media (max-width: 720px) {
+  html {
+    scrollbar-gutter: auto;
+  }
+
+  .page-shell {
+    padding-inline: 14px;
+  }
+
+  .section-label {
+    max-width: 100%;
+    width: fit-content;
+    white-space: normal;
+    line-height: 1.4;
   }
 }
