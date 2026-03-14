@@ -699,7 +699,7 @@
 @media (max-width: 720px) {
   .page {
     gap: 48px;
-    padding-top: 92px;
+    padding-top: 102px;
   }
 
   .section,
@@ -717,7 +717,7 @@
 
   .heroCopy {
     gap: 14px;
-    padding-top: 6px;
+    padding-top: 10px;
   }
 
   .heroTitle {
@@ -728,6 +728,11 @@
 
   .heroTitleLine {
     max-width: 6.4ch;
+  }
+
+  .heroTitleLineInner {
+    transform: none;
+    transition-duration: 0ms;
   }
 
   .heroSummary {
