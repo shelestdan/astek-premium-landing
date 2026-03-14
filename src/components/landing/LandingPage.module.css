@@ -722,12 +722,13 @@
 
   .heroTitle {
     max-width: none;
-    font-size: clamp(2.7rem, 13vw, 4.2rem);
+    font-size: clamp(2.45rem, 12.4vw, 3.9rem);
     line-height: 0.9;
   }
 
   .heroTitleLine {
-    max-width: 6.4ch;
+    max-width: none;
+    overflow: visible;
   }
 
   .heroTitleLineInner {
