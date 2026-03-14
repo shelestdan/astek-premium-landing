@@ -52,6 +52,7 @@
 
 .link {
   width: max-content;
+  position: relative;
   padding-bottom: 3px;
   border-bottom: 1px solid transparent;
   font-family: var(--font-mono), monospace;
@@ -59,12 +60,19 @@
   letter-spacing: 0.11em;
   text-transform: uppercase;
   color: var(--color-ink-soft);
+  transform: translate3d(
+    var(--magnetic-x, 0px),
+    calc(var(--magnetic-y, 0px) + var(--hover-y, 0px)),
+    0
+  );
   transition:
     color var(--motion-base) var(--ease-out),
-    border-color var(--motion-base) var(--ease-out);
+    border-color var(--motion-base) var(--ease-out),
+    transform var(--motion-base) var(--ease-smooth);
 }
 
 .link:hover {
+  --hover-y: -2px;
   color: var(--color-cobalt);
   border-color: rgba(53, 88, 162, 0.36);
 }

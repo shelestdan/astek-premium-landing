@@ -86,6 +86,7 @@ export function LeadForm() {
         <button
           type="button"
           className="button-secondary"
+          data-magnetic
           onClick={() => {
             setValues(defaultLeadFormValues);
             setErrors({});
@@ -200,7 +201,7 @@ export function LeadForm() {
       </label>
       {errors.consent ? <small className={styles.consentError}>{errors.consent}</small> : null}
 
-      <button type="submit" className="button-primary" disabled={isSubmitting}>
+      <button type="submit" className="button-primary" data-magnetic disabled={isSubmitting}>
         {isSubmitting ? (
           <>
             <LoaderCircle size={18} className={styles.spinner} />

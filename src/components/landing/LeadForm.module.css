@@ -1,4 +1,5 @@
 .form {
+  position: relative;
   display: grid;
   gap: 22px;
 }
@@ -22,6 +23,7 @@
 }
 
 .field {
+  position: relative;
   display: grid;
   gap: 10px;
 }
@@ -42,11 +44,17 @@
   border: 0;
   border-bottom: 1px solid var(--color-rule-strong);
   background: transparent;
+  background-image: linear-gradient(90deg, var(--color-cobalt), rgba(53, 88, 162, 0.2));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
   color: var(--color-ink);
   resize: vertical;
   transition:
     border-color var(--motion-base) var(--ease-out),
-    color var(--motion-base) var(--ease-out);
+    color var(--motion-base) var(--ease-out),
+    background-size var(--motion-base) var(--ease-smooth),
+    transform var(--motion-base) var(--ease-smooth);
 }
 
 .field input::placeholder,
@@ -54,10 +62,18 @@
   color: rgba(22, 22, 22, 0.38);
 }
 
+.field:hover input,
+.field:hover select,
+.field:hover textarea {
+  border-color: rgba(53, 88, 162, 0.38);
+}
+
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
   border-color: var(--color-cobalt);
+  background-size: 100% 1px;
+  transform: translateY(-1px);
   outline: none;
 }
 
@@ -87,7 +103,7 @@
   display: grid;
   gap: 14px;
   align-content: start;
-  padding: 0;
+  padding: 2px 0 0;
 }
 
 .successCard svg {

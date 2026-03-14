@@ -1,6 +1,5 @@
 "use client";
 
-import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import type { NavigationItem } from "@/lib/types";
@@ -34,7 +33,7 @@ export function SiteHeader({ navigation }: SiteHeaderProps) {
 
           <nav className={styles.desktopNav} aria-label="Primary navigation">
             {navigation.map((item) => (
-              <a key={item.href} href={item.href} className={styles.navLink}>
+              <a key={item.href} href={item.href} className={styles.navLink} data-magnetic>
                 {item.label}
               </a>
             ))}
@@ -44,14 +43,23 @@ export function SiteHeader({ navigation }: SiteHeaderProps) {
             <span className={styles.locale}>EN</span>
             <button
               type="button"
-              className={styles.menuButton}
+              className={`${styles.menuButton} ${isOpen ? styles.menuButtonOpen : ""}`}
               aria-expanded={isOpen}
               aria-controls="editorial-menu"
+              aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+              data-magnetic
               onClick={() => setIsOpen((current) => !current)}
             >
-              {isOpen ? <X size={16} /> : <span>Menu</span>}
+              <span className={styles.menuButtonInner}>
+                <span className={styles.menuLabel}>{isOpen ? "Close" : "Menu"}</span>
+                <span className={styles.menuLines} aria-hidden="true">
+                  <span className={styles.menuLine} />
+                  <span className={styles.menuLine} />
+                  <span className={styles.menuLine} />
+                </span>
+              </span>
             </button>
-            <a href="#consult" className={styles.inquireLink}>
+            <a href="#consult" className={styles.inquireLink} data-magnetic>
               Inquire
             </a>
           </div>
@@ -84,7 +92,7 @@ export function SiteHeader({ navigation }: SiteHeaderProps) {
 
           <div className={styles.overlayMeta}>
             <p>Moscow / St. Petersburg / Sochi</p>
-            <a href="#consult" className="button-primary" onClick={closeMenu}>
+            <a href="#consult" className="button-primary" data-magnetic onClick={closeMenu}>
               Request consultation
             </a>
           </div>

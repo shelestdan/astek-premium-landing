@@ -1,4 +1,5 @@
 .page {
+  position: relative;
   display: grid;
   gap: 88px;
   padding: 110px 0 48px;
@@ -11,6 +12,7 @@
 }
 
 .heroSection {
+  position: relative;
   min-height: calc(100svh - 120px);
 }
 
@@ -35,6 +37,7 @@
   max-width: 30ch;
   color: var(--color-ink-soft);
   font-size: 1.02rem;
+  text-wrap: balance;
 }
 
 .heroActions {
@@ -43,14 +46,34 @@
   gap: 12px;
 }
 
+.heroActions :global(.button-primary),
+.heroActions :global(.button-secondary) {
+  min-width: 180px;
+}
+
 .heroMedia {
+  position: relative;
   grid-column: 7 / span 6;
+}
+
+.heroMedia::after {
+  content: "";
+  position: absolute;
+  top: 12%;
+  right: -6%;
+  width: 26%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(53, 88, 162, 0.16), transparent 70%);
+  filter: blur(10px);
+  opacity: 0.9;
+  animation: haloFloat 16s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .heroMediaInner {
   height: 100%;
-  transform: translateY(var(--parallax-shift, 0px));
-  transition: transform 160ms linear;
+  transform: translate3d(0, var(--parallax-shift, 0px), 0);
+  transition: transform 220ms linear;
 }
 
 .heroFacts {
@@ -62,10 +85,28 @@
 }
 
 .heroFact {
+  position: relative;
   display: grid;
   gap: 6px;
-  padding: 14px 0;
+  padding: 16px 0;
   border-bottom: 1px solid var(--color-rule);
+  transition:
+    background var(--motion-base) var(--ease-out),
+    transform var(--motion-base) var(--ease-smooth),
+    border-color var(--motion-base) var(--ease-out);
+}
+
+.heroFact::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1px;
+  background: rgba(53, 88, 162, 0.62);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-base) var(--ease-smooth);
 }
 
 .heroFact span,
@@ -92,6 +133,27 @@
   overflow: clip;
   border: 1px solid var(--color-rule);
   background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 24px 60px rgba(22, 22, 22, 0.06);
+  transition:
+    transform var(--motion-slow) var(--ease-smooth),
+    box-shadow var(--motion-slow) var(--ease-out),
+    border-color var(--motion-base) var(--ease-out);
+  will-change: transform;
+}
+
+.mediaFrame::after {
+  content: "";
+  position: absolute;
+  inset: auto -16% -22% 26%;
+  height: 58%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.38), transparent 72%);
+  opacity: 0;
+  transform: translateY(24px);
+  pointer-events: none;
+  transition:
+    opacity var(--motion-slow) var(--ease-out),
+    transform var(--motion-slow) var(--ease-smooth);
+  z-index: 2;
 }
 
 .washedFrame {
@@ -115,6 +177,7 @@
     linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.18));
   mix-blend-mode: multiply;
   pointer-events: none;
+  transition: opacity var(--motion-slow) var(--ease-out);
 }
 
 .coverImage {
@@ -123,13 +186,19 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(1.01);
   transition:
-    transform var(--motion-slow) var(--ease-out),
+    transform var(--motion-slow) var(--ease-smooth),
     filter var(--motion-slow) var(--ease-out);
+  will-change: transform;
 }
 
 .heroMedia .mediaFrame {
   aspect-ratio: 10 / 13;
+}
+
+.heroMedia .coverImage {
+  transform: scale(1.05);
 }
 
 .sectionLeadGrid {
@@ -166,17 +235,31 @@
 }
 
 .credibilityRow {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr) minmax(0, 2.3fr);
   gap: 18px;
   align-items: end;
   padding: 18px 0;
   border-bottom: 1px solid var(--color-rule);
-  transition: background var(--motion-base) var(--ease-out);
+  overflow: clip;
+  transition:
+    background var(--motion-base) var(--ease-out),
+    transform var(--motion-base) var(--ease-smooth),
+    border-color var(--motion-base) var(--ease-out);
 }
 
-.credibilityRow:hover {
-  background: rgba(53, 88, 162, 0.04);
+.credibilityRow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1px;
+  background: rgba(53, 88, 162, 0.58);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-base) var(--ease-smooth);
 }
 
 .credibilityValue {
@@ -185,6 +268,9 @@
   font-weight: 700;
   line-height: 0.94;
   letter-spacing: -0.05em;
+  transition:
+    transform var(--motion-base) var(--ease-smooth),
+    color var(--motion-base) var(--ease-out);
 }
 
 .credibilityNote {
@@ -198,14 +284,27 @@
 }
 
 .residenceCard {
+  position: relative;
   grid-column: span 6;
   display: grid;
   gap: 16px;
   align-content: start;
+  transition:
+    transform var(--motion-slow) var(--ease-smooth),
+    border-color var(--motion-base) var(--ease-out);
 }
 
-.residenceCard:hover .coverImage {
-  transform: scale(1.035);
+.residenceCard::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(53, 88, 162, 0.62);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-base) var(--ease-smooth);
 }
 
 .residenceFeatured {
@@ -218,7 +317,20 @@
 }
 
 .residenceMedia {
+  position: relative;
+  overflow: clip;
   aspect-ratio: 4 / 3;
+}
+
+.residenceMedia::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 38%;
+  background: linear-gradient(180deg, rgba(22, 22, 22, 0), rgba(22, 22, 22, 0.12));
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity var(--motion-base) var(--ease-out);
 }
 
 .residenceFeatured .residenceMedia {
@@ -239,6 +351,9 @@
 
 .residenceTitle {
   font-size: clamp(1.8rem, 3vw, 3.6rem);
+  transition:
+    transform var(--motion-base) var(--ease-smooth),
+    color var(--motion-base) var(--ease-out);
 }
 
 .lineList {
@@ -279,11 +394,30 @@
 }
 
 .methodRow {
+  position: relative;
   display: grid;
   grid-template-columns: 72px 1fr;
   gap: 18px;
   padding: 18px 0;
   border-bottom: 1px solid var(--color-rule);
+  transition:
+    background var(--motion-base) var(--ease-out),
+    transform var(--motion-base) var(--ease-smooth);
+}
+
+.methodRow::after,
+.standardRow::after,
+.consultNote::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1px;
+  background: rgba(53, 88, 162, 0.6);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-base) var(--ease-smooth);
 }
 
 .methodText {
@@ -335,11 +469,15 @@
 }
 
 .standardRow {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.8fr);
   gap: 18px;
   padding: 18px 0;
   border-bottom: 1px solid var(--color-rule);
+  transition:
+    background var(--motion-base) var(--ease-out),
+    transform var(--motion-base) var(--ease-smooth);
 }
 
 .consultGrid {
@@ -360,10 +498,14 @@
 }
 
 .consultNote {
+  position: relative;
   display: grid;
   gap: 6px;
   padding: 14px 0;
   border-bottom: 1px solid var(--color-rule);
+  transition:
+    background var(--motion-base) var(--ease-out),
+    transform var(--motion-base) var(--ease-smooth);
 }
 
 .consultImage {
@@ -372,12 +514,104 @@
 }
 
 .formPanel {
+  position: relative;
   grid-column: 7 / span 6;
   padding-top: 10px;
 }
 
+.formPanel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(320px, 100%);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(53, 88, 162, 0.68), rgba(53, 88, 162, 0));
+  opacity: 0.75;
+}
+
 .formPanel :global(.button-primary) {
   width: max-content;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .heroFact:hover {
+    background: rgba(255, 255, 255, 0.38);
+    transform: translate3d(0, -5px, 0);
+  }
+
+  .heroFact:hover::after,
+  .credibilityRow:hover::after,
+  .residenceCard:hover::before,
+  .methodRow:hover::after,
+  .standardRow:hover::after,
+  .consultNote:hover::after {
+    transform: scaleX(1);
+  }
+
+  .mediaFrame:hover {
+    transform: translate3d(0, -8px, 0);
+    box-shadow: 0 32px 80px rgba(22, 22, 22, 0.1);
+    border-color: rgba(53, 88, 162, 0.26);
+  }
+
+  .mediaFrame:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .heroMedia:hover .coverImage {
+    transform: scale(1.09);
+  }
+
+  .credibilityRow:hover {
+    background: rgba(53, 88, 162, 0.045);
+    transform: translate3d(8px, 0, 0);
+  }
+
+  .credibilityRow:hover .credibilityValue {
+    color: var(--color-cobalt);
+    transform: translate3d(10px, 0, 0);
+  }
+
+  .residenceCard:hover {
+    transform: translate3d(0, -10px, 0);
+  }
+
+  .residenceCard:hover .coverImage {
+    transform: scale(1.065);
+  }
+
+  .residenceCard:hover .residenceTitle {
+    color: var(--color-cobalt);
+    transform: translate3d(4px, 0, 0);
+  }
+
+  .residenceCard:hover .residenceMedia::after {
+    opacity: 0.84;
+  }
+
+  .residenceCard:hover .mediaWash {
+    opacity: 0.82;
+  }
+
+  .methodRow:hover,
+  .standardRow:hover,
+  .consultNote:hover {
+    background: rgba(53, 88, 162, 0.035);
+    transform: translate3d(8px, 0, 0);
+  }
+}
+
+@keyframes haloFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(0.96);
+  }
+
+  50% {
+    transform: translate3d(-14px, 18px, 0) scale(1.06);
+  }
 }
 
 @media (max-width: 960px) {

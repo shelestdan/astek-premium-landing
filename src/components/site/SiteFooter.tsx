@@ -20,7 +20,7 @@ export function SiteFooter({ navigation }: SiteFooterProps) {
           <span className={styles.columnLabel}>Index</span>
           <div className={styles.linkList}>
             {navigation.map((item) => (
-              <a key={item.href} href={item.href} className={styles.link}>
+              <a key={item.href} href={item.href} className={styles.link} data-magnetic>
                 {item.label}
               </a>
             ))}
@@ -30,7 +30,7 @@ export function SiteFooter({ navigation }: SiteFooterProps) {
         <div className={styles.metaColumn}>
           <span className={styles.columnLabel}>Territory</span>
           <p>{footerCopy.locations}</p>
-          <a href="#consult" className={styles.link}>
+          <a href="#consult" className={styles.link} data-magnetic>
             {footerCopy.contactPrompt}
           </a>
         </div>
