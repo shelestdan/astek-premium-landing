@@ -49,7 +49,7 @@
   transition-delay: var(--reveal-delay, 0ms);
 }
 
-:global(body.motion-ready) .heroCopy.is-visible .heroTitleLineInner {
+.heroCopy.is-visible .heroTitleLineInner {
   transform: translate3d(0, 0, 0);
 }
 
@@ -644,8 +644,8 @@
 
 @media (max-width: 960px) {
   .page {
-    gap: 72px;
-    padding-top: 96px;
+    gap: 64px;
+    padding-top: 92px;
   }
 
   .heroCopy,
@@ -662,13 +662,13 @@
   }
 
   .heroCopy {
-    padding-top: 24px;
+    padding-top: 18px;
   }
 
   .heroMedia .mediaFrame,
   .methodMedia .mediaFrame,
   .standardsMedia .mediaFrame {
-    aspect-ratio: 5 / 4;
+    aspect-ratio: 6 / 5;
   }
 
   .credibilityRow,
@@ -698,17 +698,75 @@
 
 @media (max-width: 720px) {
   .page {
-    gap: 56px;
-    padding-top: 82px;
+    gap: 48px;
+    padding-top: 92px;
+  }
+
+  .section,
+  .consultSection {
+    gap: 20px;
+  }
+
+  .heroSection {
+    min-height: auto;
+  }
+
+  .heroGrid {
+    gap: 18px;
+  }
+
+  .heroCopy {
+    gap: 14px;
+    padding-top: 6px;
   }
 
   .heroTitle {
-    font-size: clamp(2.9rem, 14vw, 4.7rem);
+    max-width: none;
+    font-size: clamp(2.7rem, 13vw, 4.2rem);
+    line-height: 0.9;
+  }
+
+  .heroTitleLine {
+    max-width: 6.4ch;
+  }
+
+  .heroSummary {
+    max-width: none;
+    font-size: 0.98rem;
+    line-height: 1.5;
   }
 
   .heroActions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .heroMedia {
+    margin-top: 4px;
+  }
+
+  .heroMedia::after {
+    top: auto;
+    right: 6%;
+    bottom: 6%;
+    width: 34%;
+  }
+
+  .heroMedia .mediaFrame {
+    aspect-ratio: 4 / 5;
+  }
+
+  .heroFacts {
+    margin-top: 2px;
+  }
+
+  .heroFact {
+    gap: 4px;
+    padding: 13px 0;
+  }
+
+  .heroFact strong {
+    font-size: 0.9rem;
   }
 
   .heroActions :global(.button-primary),
@@ -717,9 +775,109 @@
     width: 100%;
   }
 
+  .sectionLead {
+    gap: 10px;
+  }
+
+  .sectionLead h2,
+  .methodContent h2,
+  .standardsIntro h2,
+  .consultIntro h2 {
+    max-width: none;
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .sectionLead p,
+  .methodContent p,
+  .standardsIntro p,
+  .consultIntro p,
+  .residenceBody p,
+  .methodText p,
+  .standardRow p {
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+
   .credibilityRow,
   .methodRow,
   .standardRow {
     gap: 10px;
+  }
+
+  .credibilityRow {
+    padding: 14px 0;
+  }
+
+  .credibilityValue {
+    font-size: clamp(1.7rem, 11vw, 2.5rem);
+  }
+
+  .residenceList {
+    gap: 20px;
+  }
+
+  .residenceCard,
+  .residenceFeatured {
+    gap: 12px;
+    padding-bottom: 0;
+  }
+
+  .residenceMedia,
+  .residenceFeatured .residenceMedia {
+    aspect-ratio: 4 / 3;
+  }
+
+  .residenceBody {
+    gap: 10px;
+  }
+
+  .residenceTitle {
+    font-size: clamp(1.65rem, 9vw, 2.3rem);
+  }
+
+  .lineList li {
+    padding: 9px 0;
+  }
+
+  .methodContent,
+  .standardsIntro,
+  .consultIntro {
+    gap: 12px;
+  }
+
+  .methodMedia .mediaFrame {
+    aspect-ratio: 4 / 5;
+  }
+
+  .methodRow {
+    grid-template-columns: 42px 1fr;
+    padding: 14px 0;
+  }
+
+  .founderQuote {
+    padding-top: 14px;
+  }
+
+  .founderQuote p {
+    font-size: clamp(1.5rem, 8vw, 2.2rem);
+    line-height: 0.98;
+  }
+
+  .standardsMedia .mediaFrame,
+  .consultImage {
+    aspect-ratio: 4 / 3;
+  }
+
+  .standardRow,
+  .consultNote {
+    padding: 14px 0;
+  }
+
+  .formPanel {
+    padding-top: 0;
+  }
+
+  .formPanel::before {
+    width: 100%;
   }
 }

@@ -451,21 +451,24 @@
 
 @media (max-width: 720px) {
   .header {
-    padding-top: 10px;
+    padding-top: 8px;
   }
 
   .inner {
-    min-height: 60px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: 64px;
   }
 
   .wordmark {
-    grid-column: 1 / span 6;
-    padding: 10px 0;
+    grid-column: 1;
+    gap: 4px;
+    padding: 12px 0;
   }
 
   .utilityRail {
-    grid-column: 7 / span 6;
-    min-height: 60px;
+    grid-column: 2;
+    min-height: 64px;
+    border-left: 0;
   }
 
   .locale {
@@ -474,15 +477,55 @@
 
   .menuButton,
   .inquireLink {
-    min-width: 0;
-    flex: 1;
+    min-width: 78px;
+    padding: 0 12px;
+    flex: none;
+  }
+
+  .menuButtonInner {
+    gap: 8px;
+  }
+
+  .wordmarkMain {
+    font-size: 1.4rem;
+  }
+
+  .wordmarkMeta {
+    max-width: 16ch;
+    font-size: 0.6rem;
+    line-height: 1.45;
   }
 
   .overlayInner {
-    padding-top: 92px;
+    padding-top: 86px;
+    padding-bottom: 28px;
+  }
+
+  .overlayIntro {
+    gap: 10px;
+  }
+
+  .overlayIntro h2 {
+    font-size: clamp(2.2rem, 12vw, 3.5rem);
+    max-width: 7ch;
+  }
+
+  .overlayIntro p {
+    max-width: 22ch;
+    font-size: 0.96rem;
   }
 
   .overlayLink {
     grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 18px 0;
+  }
+
+  .overlayLinkLabel {
+    font-size: clamp(1.85rem, 10vw, 2.8rem);
+  }
+
+  .overlayMeta {
+    gap: 10px;
   }
 }
