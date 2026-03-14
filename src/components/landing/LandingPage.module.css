@@ -29,8 +29,28 @@
 }
 
 .heroTitle {
+  display: grid;
+  gap: 0.05em;
   max-width: 8.4ch;
   font-size: clamp(3.6rem, 8vw, 8rem);
+}
+
+.heroTitleLine {
+  display: block;
+  overflow: clip;
+}
+
+.heroTitleLineInner {
+  display: block;
+  transform: translate3d(0, 108%, 0);
+  transition:
+    transform 900ms var(--ease-smooth),
+    opacity 900ms var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+:global(body.motion-ready) .heroCopy.is-visible .heroTitleLineInner {
+  transform: translate3d(0, 0, 0);
 }
 
 .heroSummary {
@@ -534,7 +554,7 @@
   width: max-content;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .heroFact:hover {
     background: rgba(255, 255, 255, 0.38);
     transform: translate3d(0, -5px, 0);
@@ -601,6 +621,14 @@
     background: rgba(53, 88, 162, 0.035);
     transform: translate3d(8px, 0, 0);
   }
+}
+
+.heroFact:focus-visible,
+.credibilityRow:focus-visible,
+.methodRow:focus-visible,
+.standardRow:focus-visible,
+.consultNote:focus-visible {
+  background: rgba(53, 88, 162, 0.035);
 }
 
 @keyframes haloFloat {

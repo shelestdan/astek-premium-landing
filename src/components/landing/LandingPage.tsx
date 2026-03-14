@@ -37,7 +37,18 @@ export function LandingPage() {
           <div className={`canon-grid ${styles.heroGrid}`}>
             <div className={`${styles.heroCopy} reveal`} data-reveal style={revealStyle(40)}>
               <span className="section-label">{manifesto.label}</span>
-              <h1 className={`display-title ${styles.heroTitle}`}>{manifesto.title}</h1>
+              <h1 className={`display-title ${styles.heroTitle}`} aria-label={manifesto.title}>
+                {manifesto.titleLines.map((line, index) => (
+                  <span
+                    key={line}
+                    className={styles.heroTitleLine}
+                    aria-hidden="true"
+                    style={revealStyle(120 + index * 90)}
+                  >
+                    <span className={styles.heroTitleLineInner}>{line}</span>
+                  </span>
+                ))}
+              </h1>
               <p className={styles.heroSummary}>{manifesto.summary}</p>
               <div className={styles.heroActions}>
                 <a href="#consult" className="button-primary" data-magnetic>

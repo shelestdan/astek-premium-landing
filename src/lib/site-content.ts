@@ -59,6 +59,7 @@ export const defaultLeadFormValues: LeadFormValues = {
 export const manifesto = {
   label: "Private construction atelier / Russia",
   title: "Private residences composed with architectural restraint.",
+  titleLines: ["Private residences", "composed with", "architectural restraint."],
   summary:
     "Astek brings architecture, engineering, procurement and execution into one quiet line of control for bespoke homes.",
   ctaPrimary: "Request consultation",

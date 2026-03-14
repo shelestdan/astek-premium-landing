@@ -35,6 +35,19 @@ html {
   background: var(--color-paper);
 }
 
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+html.lenis.lenis-stopped {
+  overflow: clip;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -72,6 +85,12 @@ body::before {
       rgba(53, 88, 162, 0.05) 100%
     );
   opacity: 0.9;
+}
+
+body.motion-calm {
+  --motion-fast: 180ms;
+  --motion-base: 280ms;
+  --motion-slow: 520ms;
 }
 
 html,
@@ -248,18 +267,22 @@ img {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 1ms !important;
-    scroll-behavior: auto !important;
+  .reveal {
+    filter: blur(6px);
+    transform: translate3d(0, 14px, 0) scale(0.997);
   }
 
-  .reveal {
-    opacity: 1;
-    transform: none;
+  body::before {
+    opacity: 0.5;
+  }
+
+  [data-parallax] {
+    --parallax-shift: 0px !important;
+  }
+
+  .button-primary,
+  .button-secondary {
+    transition-duration: 220ms;
   }
 }
 

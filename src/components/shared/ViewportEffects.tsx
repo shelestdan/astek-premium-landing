@@ -5,20 +5,21 @@ import { useEffect } from "react";
 
 export function ViewportEffects() {
   useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const canHover = window.matchMedia("(any-hover: hover)").matches;
+    const finePointer = window.matchMedia("(any-pointer: fine)").matches;
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
     const parallaxLayers = Array.from(document.querySelectorAll<HTMLElement>("[data-parallax]"));
     const root = document.documentElement;
     const body = document.body;
-    let nativeScrollCleanup = () => {};
-    let nativeResizeCleanup = () => {};
     let parallaxFrame = 0;
     let lenisFrame = 0;
+    let readyFrame = 0;
 
-    if (reducedMotion) {
-      revealElements.forEach((element) => element.classList.add("is-visible"));
-    }
+    body.classList.add(prefersReducedMotion ? "motion-calm" : "motion-full");
+    readyFrame = window.requestAnimationFrame(() => {
+      body.classList.add("motion-ready");
+    });
 
     const setScrollState = (scrollY: number) => {
       const scrollLimit = Math.max(
@@ -34,30 +35,19 @@ export function ViewportEffects() {
 
     const updateParallax = () => {
       parallaxFrame = 0;
-
-      if (reducedMotion) {
-        parallaxLayers.forEach((layer) => {
-          layer.style.setProperty("--parallax-shift", "0px");
-        });
-        return;
-      }
-
       const viewportHeight = window.innerHeight;
+      const intensity = prefersReducedMotion ? 10 : 34;
 
       parallaxLayers.forEach((layer) => {
         const rect = layer.getBoundingClientRect();
         const progress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
-        const shift = (progress - 0.5) * 28;
+        const shift = (progress - 0.5) * intensity;
 
         layer.style.setProperty("--parallax-shift", `${shift.toFixed(2)}px`);
       });
     };
 
     const requestTick = () => {
-      if (reducedMotion) {
-        return;
-      }
-
       if (parallaxFrame) {
         return;
       }
@@ -88,7 +78,10 @@ export function ViewportEffects() {
       event.preventDefault();
 
       if (lenis) {
-        lenis.scrollTo(destination, { offset: -96, duration: 1.15 });
+        lenis.scrollTo(destination, {
+          offset: -96,
+          duration: prefersReducedMotion ? 0.9 : 1.35,
+        });
         return;
       }
 
@@ -97,7 +90,7 @@ export function ViewportEffects() {
 
     const magneticCleanups: Array<() => void> = [];
 
-    if (!reducedMotion && finePointer) {
+    if (canHover && finePointer && !prefersReducedMotion) {
       const magneticElements = Array.from(
         document.querySelectorAll<HTMLElement>("[data-magnetic]"),
       );
@@ -130,82 +123,63 @@ export function ViewportEffects() {
     }
 
     let observer: IntersectionObserver | null = null;
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
 
-    if (!reducedMotion) {
-      const revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) {
-              return;
-            }
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: prefersReducedMotion ? 0.08 : 0.16,
+        rootMargin: prefersReducedMotion ? "0px 0px -4% 0px" : "0px 0px -8% 0px",
+      },
+    );
 
-            entry.target.classList.add("is-visible");
-            revealObserver.unobserve(entry.target);
-          });
-        },
-        {
-          threshold: 0.16,
-          rootMargin: "0px 0px -8% 0px",
-        },
-      );
-
-      revealElements.forEach((element) => revealObserver.observe(element));
-      observer = revealObserver;
-    }
+    revealElements.forEach((element) => revealObserver.observe(element));
+    observer = revealObserver;
 
     let lenis: Lenis | null = null;
+    lenis = new Lenis({
+      duration: prefersReducedMotion ? 0.9 : 1.45,
+      lerp: prefersReducedMotion ? 0.14 : 0.065,
+      smoothWheel: true,
+      syncTouch: true,
+      touchMultiplier: 1,
+      wheelMultiplier: prefersReducedMotion ? 0.92 : 0.82,
+    });
 
-    if (!reducedMotion) {
-      lenis = new Lenis({
-        duration: 1.12,
-        lerp: 0.08,
-        smoothWheel: true,
-        syncTouch: true,
-        touchMultiplier: 1.02,
-        wheelMultiplier: 0.88,
-      });
+    lenis.on("scroll", ({ scroll }: { scroll: number }) => {
+      setScrollState(scroll);
+      requestTick();
+    });
 
-      lenis.on("scroll", ({ scroll }: { scroll: number }) => {
-        setScrollState(scroll);
-        requestTick();
-      });
-
-      const raf = (time: number) => {
-        lenis?.raf(time);
-        lenisFrame = window.requestAnimationFrame(raf);
-      };
-
+    const raf = (time: number) => {
+      lenis?.raf(time);
       lenisFrame = window.requestAnimationFrame(raf);
-    } else {
-      const handleNativeScroll = () => {
-        setScrollState(window.scrollY);
-      };
+    };
 
-      const handleNativeResize = () => {
-        setScrollState(window.scrollY);
-        updateParallax();
-      };
-
-      window.addEventListener("scroll", handleNativeScroll, { passive: true });
-      window.addEventListener("resize", handleNativeResize);
-
-      nativeScrollCleanup = () => window.removeEventListener("scroll", handleNativeScroll);
-      nativeResizeCleanup = () => window.removeEventListener("resize", handleNativeResize);
-    }
+    lenisFrame = window.requestAnimationFrame(raf);
 
     setScrollState(window.scrollY);
     updateParallax();
+    window.addEventListener("resize", requestTick);
     document.addEventListener("click", anchorHandler);
 
     return () => {
       observer?.disconnect();
       document.removeEventListener("click", anchorHandler);
       magneticCleanups.forEach((cleanup) => cleanup());
-      nativeScrollCleanup();
-      nativeResizeCleanup();
+      window.removeEventListener("resize", requestTick);
       lenis?.destroy();
       window.cancelAnimationFrame(parallaxFrame);
       window.cancelAnimationFrame(lenisFrame);
+      window.cancelAnimationFrame(readyFrame);
+      body.classList.remove("motion-ready", "motion-calm", "motion-full", "has-scrolled");
     };
   }, []);
 
