@@ -1,0 +1,60 @@
+<svg width="1600" height="1200" viewBox="0 0 1600 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1200" fill="#09111D"/>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1260" cy="180" r="210" fill="url(#sun)" opacity="0.9"/>
+  <path d="M0 790C178 726 329 708 451 736C563 762 688 843 841 843C1024 843 1148 695 1312 695C1421 695 1517 730 1600 790V1200H0V790Z" fill="#0E1826"/>
+  <rect y="845" width="1600" height="355" fill="url(#ground)"/>
+  <rect x="370" y="448" width="850" height="352" rx="24" fill="#0C1420" stroke="#314767" stroke-width="3"/>
+  <rect x="370" y="520" width="850" height="280" rx="18" fill="#111C2C"/>
+  <rect x="862" y="390" width="272" height="408" rx="20" fill="#172438" stroke="#5B7DB5" stroke-width="3"/>
+  <rect x="436" y="515" width="312" height="218" rx="6" fill="url(#glass1)"/>
+  <rect x="770" y="515" width="180" height="218" rx="6" fill="url(#glass2)"/>
+  <rect x="980" y="462" width="108" height="271" rx="6" fill="url(#glass3)"/>
+  <rect x="392" y="800" width="976" height="20" rx="10" fill="#172233"/>
+  <path d="M198 967H1093L1030 1122H256L198 967Z" fill="url(#water)" opacity="0.92"/>
+  <path d="M1238 975L1394 891L1532 989L1398 1122H1186L1238 975Z" fill="#162232"/>
+  <rect x="1110" y="644" width="95" height="156" rx="10" fill="#0B121B"/>
+  <rect x="1140" y="680" width="34" height="120" rx="8" fill="url(#door)"/>
+  <rect x="454" y="560" width="78" height="112" rx="4" fill="#C1D8FF" fill-opacity="0.18"/>
+  <rect x="552" y="560" width="78" height="112" rx="4" fill="#C1D8FF" fill-opacity="0.14"/>
+  <rect x="788" y="560" width="66" height="112" rx="4" fill="#E5D8C1" fill-opacity="0.22"/>
+  <rect x="995" y="507" width="78" height="182" rx="4" fill="#C1D8FF" fill-opacity="0.18"/>
+  <path d="M148 1016C191 938 253 899 334 901C426 903 498 960 564 1066H148V1016Z" fill="#0F1824"/>
+  <path d="M1330 1012C1367 956 1425 925 1503 929C1545 931 1578 942 1600 958V1122H1268L1330 1012Z" fill="#101927"/>
+  <defs>
+    <linearGradient id="sky" x1="800" y1="0" x2="800" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#12233D"/>
+      <stop offset="0.54" stop-color="#0B1626"/>
+      <stop offset="1" stop-color="#09111D"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1260 180) rotate(90) scale(210)">
+      <stop stop-color="#7AA6FF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#7AA6FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ground" x1="800" y1="845" x2="800" y2="1200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08111C"/>
+      <stop offset="1" stop-color="#05090F"/>
+    </linearGradient>
+    <linearGradient id="glass1" x1="592" y1="515" x2="592" y2="733" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8FB2FF" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#1C2A3D" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="glass2" x1="860" y1="515" x2="860" y2="733" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E4D9C7" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#1F2C3D" stop-opacity="0.92"/>
+    </linearGradient>
+    <linearGradient id="glass3" x1="1034" y1="462" x2="1034" y2="733" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#89AAFF" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#1E2B3D" stop-opacity="0.92"/>
+    </linearGradient>
+    <linearGradient id="water" x1="198" y1="983" x2="1093" y2="1084" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#183556"/>
+      <stop offset="0.52" stop-color="#24508A"/>
+      <stop offset="1" stop-color="#112947"/>
+    </linearGradient>
+    <linearGradient id="door" x1="1157" y1="680" x2="1157" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E0CDA8"/>
+      <stop offset="1" stop-color="#7F6040"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,48 @@
+<svg width="1200" height="1400" viewBox="0 0 1200 1400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1400" fill="#0A1019"/>
+  <rect width="1200" height="760" fill="url(#sky)"/>
+  <path d="M0 766C94 703 201 668 321 668C464 668 542 720 680 720C826 720 945 631 1087 631C1126 631 1164 635 1200 643V1400H0V766Z" fill="#101825"/>
+  <rect y="820" width="1200" height="580" fill="url(#ground)"/>
+  <rect x="159" y="448" width="610" height="414" rx="16" fill="#182434" stroke="#415B88" stroke-width="3"/>
+  <rect x="219" y="520" width="232" height="236" rx="6" fill="url(#glassA)"/>
+  <rect x="475" y="520" width="232" height="236" rx="6" fill="url(#glassB)"/>
+  <rect x="779" y="344" width="104" height="640" rx="18" fill="#1A2737"/>
+  <rect x="816" y="182" width="30" height="734" rx="10" fill="#314C77"/>
+  <rect x="846" y="214" width="242" height="24" rx="12" fill="#4B6AA3"/>
+  <rect x="1038" y="238" width="26" height="292" rx="12" fill="#5D7CB3"/>
+  <path d="M982 559H1110L1033 772H906L982 559Z" fill="#172232"/>
+  <rect x="887" y="839" width="192" height="34" rx="17" fill="#21314A"/>
+  <rect x="0" y="1038" width="1200" height="362" fill="#070D14"/>
+  <path d="M0 1114H1200V1400H0V1114Z" fill="url(#floor)"/>
+  <path d="M163 1075H752V1400H163V1075Z" fill="#111A27"/>
+  <path d="M208 1056H690V1400H208V1056Z" fill="#152032"/>
+  <path d="M301 1007H362V1400H301V1007Z" fill="#233751"/>
+  <path d="M507 1007H568V1400H507V1007Z" fill="#233751"/>
+  <circle cx="265" cy="931" r="32" fill="#203148"/>
+  <path d="M233 1034C240 983 270 953 324 949C370 946 404 970 423 1022V1068H233V1034Z" fill="#162231"/>
+  <circle cx="470" cy="943" r="30" fill="#24354C"/>
+  <path d="M441 1033C451 986 478 960 527 960C573 960 603 989 620 1038V1068H441V1033Z" fill="#182536"/>
+  <rect x="320" y="864" width="179" height="12" rx="6" fill="#6E8CC5"/>
+  <defs>
+    <linearGradient id="sky" x1="600" y1="0" x2="600" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#172A49"/>
+      <stop offset="1" stop-color="#0B1522"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="600" y1="820" x2="600" y2="1400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0D1520"/>
+      <stop offset="1" stop-color="#070C12"/>
+    </linearGradient>
+    <linearGradient id="glassA" x1="335" y1="520" x2="335" y2="756" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8AB1FF" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#24364D" stop-opacity="0.94"/>
+    </linearGradient>
+    <linearGradient id="glassB" x1="591" y1="520" x2="591" y2="756" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E5DCCB" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#223347" stop-opacity="0.94"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="600" y1="1114" x2="600" y2="1400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0C1118"/>
+      <stop offset="1" stop-color="#05080E"/>
+    </linearGradient>
+  </defs>
+</svg>

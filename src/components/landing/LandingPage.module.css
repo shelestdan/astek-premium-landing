@@ -1,0 +1,463 @@
+.page {
+  display: grid;
+  gap: 88px;
+  padding: 110px 0 48px;
+}
+
+.section,
+.consultSection {
+  display: grid;
+  gap: 28px;
+}
+
+.heroSection {
+  min-height: calc(100svh - 120px);
+}
+
+.heroGrid {
+  align-items: start;
+}
+
+.heroCopy {
+  grid-column: 1 / span 5;
+  display: grid;
+  gap: 20px;
+  align-content: start;
+  padding-top: clamp(54px, 9vw, 126px);
+}
+
+.heroTitle {
+  max-width: 8.4ch;
+  font-size: clamp(3.6rem, 8vw, 8rem);
+}
+
+.heroSummary {
+  max-width: 30ch;
+  color: var(--color-ink-soft);
+  font-size: 1.02rem;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.heroMedia {
+  grid-column: 7 / span 6;
+}
+
+.heroMediaInner {
+  height: 100%;
+  transform: translateY(var(--parallax-shift, 0px));
+  transition: transform 160ms linear;
+}
+
+.heroFacts {
+  grid-column: 1 / span 5;
+  display: grid;
+  gap: 0;
+  margin-top: 18px;
+  border-top: 1px solid var(--color-rule);
+}
+
+.heroFact {
+  display: grid;
+  gap: 6px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.heroFact span,
+.residenceMeta,
+.methodNumber,
+.consultNote span,
+.credibilityLabel,
+.columnMeta {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.heroFact strong,
+.consultNote strong {
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+
+.mediaFrame {
+  position: relative;
+  overflow: clip;
+  border: 1px solid var(--color-rule);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.washedFrame {
+  background: var(--color-cobalt-soft);
+}
+
+.naturalFrame {
+  background: #fff;
+}
+
+.washedFrame .coverImage {
+  filter: grayscale(0.14) saturate(0.36) contrast(0.94);
+}
+
+.mediaWash {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(53, 88, 162, 0.32), rgba(53, 88, 162, 0.62)),
+    linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.18));
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.coverImage {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform var(--motion-slow) var(--ease-out),
+    filter var(--motion-slow) var(--ease-out);
+}
+
+.heroMedia .mediaFrame {
+  aspect-ratio: 10 / 13;
+}
+
+.sectionLeadGrid {
+  align-items: end;
+}
+
+.sectionLead {
+  grid-column: 1 / span 5;
+  display: grid;
+  gap: 14px;
+}
+
+.sectionLead h2,
+.methodContent h2,
+.standardsIntro h2,
+.consultIntro h2 {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  max-width: 9.5ch;
+}
+
+.sectionLead p,
+.methodContent p,
+.standardsIntro p,
+.consultIntro p,
+.residenceBody p,
+.methodText p,
+.standardRow p {
+  color: var(--color-ink-soft);
+}
+
+.credibilityList {
+  display: grid;
+  border-top: 1px solid var(--color-rule);
+}
+
+.credibilityRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr) minmax(0, 2.3fr);
+  gap: 18px;
+  align-items: end;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--color-rule);
+  transition: background var(--motion-base) var(--ease-out);
+}
+
+.credibilityRow:hover {
+  background: rgba(53, 88, 162, 0.04);
+}
+
+.credibilityValue {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+}
+
+.credibilityNote {
+  max-width: 36ch;
+}
+
+.residenceList {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--grid-gap);
+}
+
+.residenceCard {
+  grid-column: span 6;
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.residenceCard:hover .coverImage {
+  transform: scale(1.035);
+}
+
+.residenceFeatured {
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--grid-gap);
+  align-items: start;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.residenceMedia {
+  aspect-ratio: 4 / 3;
+}
+
+.residenceFeatured .residenceMedia {
+  grid-column: 1 / span 7;
+  aspect-ratio: 11 / 8;
+}
+
+.residenceBody {
+  display: grid;
+  gap: 12px;
+}
+
+.residenceFeatured .residenceBody {
+  grid-column: 8 / span 5;
+  align-content: start;
+  padding-top: 6px;
+}
+
+.residenceTitle {
+  font-size: clamp(1.8rem, 3vw, 3.6rem);
+}
+
+.lineList {
+  display: grid;
+  gap: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-rule);
+}
+
+.lineList li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-rule);
+  color: var(--color-ink-soft);
+}
+
+.methodGrid {
+  align-items: start;
+}
+
+.methodMedia {
+  grid-column: 1 / span 5;
+}
+
+.methodMedia .mediaFrame {
+  aspect-ratio: 10 / 13;
+}
+
+.methodContent {
+  grid-column: 7 / span 6;
+  display: grid;
+  gap: 16px;
+}
+
+.methodList {
+  display: grid;
+  border-top: 1px solid var(--color-rule);
+}
+
+.methodRow {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.methodText {
+  display: grid;
+  gap: 8px;
+}
+
+.methodText h3,
+.standardRow h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.standardsGrid {
+  align-items: start;
+}
+
+.standardsIntro {
+  grid-column: 1 / span 5;
+  display: grid;
+  gap: 16px;
+}
+
+.founderQuote {
+  margin: 6px 0 0;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--color-rule);
+}
+
+.founderQuote p {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.8rem, 3vw, 3.2rem);
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+.standardsMedia {
+  grid-column: 7 / span 6;
+}
+
+.standardsMedia .mediaFrame {
+  aspect-ratio: 5 / 4;
+}
+
+.standardTable {
+  display: grid;
+  border-top: 1px solid var(--color-rule);
+}
+
+.standardRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.8fr);
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.consultGrid {
+  align-items: start;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-rule);
+}
+
+.consultIntro {
+  grid-column: 1 / span 5;
+  display: grid;
+  gap: 16px;
+}
+
+.consultNotes {
+  display: grid;
+  border-top: 1px solid var(--color-rule);
+}
+
+.consultNote {
+  display: grid;
+  gap: 6px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.consultImage {
+  margin-top: 12px;
+  aspect-ratio: 5 / 4;
+}
+
+.formPanel {
+  grid-column: 7 / span 6;
+  padding-top: 10px;
+}
+
+.formPanel :global(.button-primary) {
+  width: max-content;
+}
+
+@media (max-width: 960px) {
+  .page {
+    gap: 72px;
+    padding-top: 96px;
+  }
+
+  .heroCopy,
+  .heroMedia,
+  .heroFacts,
+  .sectionLead,
+  .methodMedia,
+  .methodContent,
+  .standardsIntro,
+  .standardsMedia,
+  .consultIntro,
+  .formPanel {
+    grid-column: 1 / -1;
+  }
+
+  .heroCopy {
+    padding-top: 24px;
+  }
+
+  .heroMedia .mediaFrame,
+  .methodMedia .mediaFrame,
+  .standardsMedia .mediaFrame {
+    aspect-ratio: 5 / 4;
+  }
+
+  .credibilityRow,
+  .standardRow {
+    grid-template-columns: 1fr;
+  }
+
+  .residenceList {
+    grid-template-columns: 1fr;
+  }
+
+  .residenceCard,
+  .residenceFeatured {
+    grid-column: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .residenceFeatured .residenceMedia,
+  .residenceFeatured .residenceBody {
+    grid-column: auto;
+  }
+
+  .methodRow {
+    grid-template-columns: 56px 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .page {
+    gap: 56px;
+    padding-top: 82px;
+  }
+
+  .heroTitle {
+    font-size: clamp(2.9rem, 14vw, 4.7rem);
+  }
+
+  .heroActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .heroActions :global(.button-primary),
+  .heroActions :global(.button-secondary),
+  .formPanel :global(.button-primary) {
+    width: 100%;
+  }
+
+  .credibilityRow,
+  .methodRow,
+  .standardRow {
+    gap: 10px;
+  }
+}

@@ -5,13 +5,17 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:pages": "node scripts/build-pages.mjs",
+    "build:pages:raw": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "lucide-react": "^0.577.0",
     "next": "16.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

@@ -1,0 +1,41 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#09111B"/>
+  <rect width="1200" height="620" fill="url(#sky)"/>
+  <circle cx="938" cy="180" r="166" fill="url(#glow)"/>
+  <path d="M0 584C131 560 233 554 308 564C417 579 487 628 600 628C699 628 781 587 875 573C982 557 1090 573 1200 612V900H0V584Z" fill="#0E1725"/>
+  <rect y="646" width="1200" height="254" fill="url(#ground)"/>
+  <rect x="224" y="334" width="706" height="250" rx="22" fill="#0D1521" stroke="#31486C" stroke-width="3"/>
+  <rect x="224" y="392" width="706" height="192" rx="14" fill="#132030"/>
+  <rect x="285" y="402" width="278" height="146" rx="6" fill="url(#glassA)"/>
+  <rect x="594" y="402" width="276" height="146" rx="6" fill="url(#glassB)"/>
+  <rect x="398" y="596" width="670" height="14" rx="7" fill="#172435"/>
+  <path d="M52 726H758L680 868H114L52 726Z" fill="url(#water)" opacity="0.96"/>
+  <path d="M894 618H1032L1122 900H830L894 618Z" fill="#101927"/>
+  <defs>
+    <linearGradient id="sky" x1="600" y1="0" x2="600" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#152848"/>
+      <stop offset="1" stop-color="#0B1523"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(938 180) rotate(90) scale(166)">
+      <stop stop-color="#7AA6FF" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#7AA6FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ground" x1="600" y1="646" x2="600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1320"/>
+      <stop offset="1" stop-color="#050A10"/>
+    </linearGradient>
+    <linearGradient id="glassA" x1="424" y1="402" x2="424" y2="548" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8CB0FD" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#24364D" stop-opacity="0.94"/>
+    </linearGradient>
+    <linearGradient id="glassB" x1="732" y1="402" x2="732" y2="548" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E4D8C5" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#233449" stop-opacity="0.96"/>
+    </linearGradient>
+    <linearGradient id="water" x1="52" y1="726" x2="758" y2="868" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#153355"/>
+      <stop offset="0.55" stop-color="#2A5A94"/>
+      <stop offset="1" stop-color="#112745"/>
+    </linearGradient>
+  </defs>
+</svg>
