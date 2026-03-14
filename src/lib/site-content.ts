@@ -10,6 +10,7 @@ import type {
   ResidenceCase,
   StandardNote,
 } from "@/lib/types";
+import { assetPath } from "@/lib/asset-path";
 
 export const navigation: NavigationItem[] = [
   { href: "#manifesto", label: "Manifesto" },
@@ -106,7 +107,7 @@ export const residenceCases: ResidenceCase[] = [
     summary:
       "A restrained private residence built around quiet facades, hidden systems and a deliberate family rhythm.",
     details: ["Private wellness wing", "Lutron + BMS", "Two underground levels"],
-    image: "/images/project-river-premium.jpg",
+    image: assetPath("/images/project-river-premium.jpg"),
     treatment: "washed",
   },
   {
@@ -116,7 +117,7 @@ export const residenceCases: ResidenceCase[] = [
     summary:
       "A reconstructed villa with a disciplined material palette and a full engineering reset.",
     details: ["Reconstruction", "Stone + bronze", "Controlled procurement"],
-    image: "/images/project-pine-villa.jpg",
+    image: assetPath("/images/project-pine-villa.jpg"),
     treatment: "natural",
   },
   {
@@ -126,7 +127,7 @@ export const residenceCases: ResidenceCase[] = [
     summary:
       "A hillside residence balanced between panoramic openness and construction control on a complex site.",
     details: ["Slope engineering", "Infinity waterline", "Logistics on terrain"],
-    image: "/images/project-skyline-mansion.jpg",
+    image: assetPath("/images/project-skyline-mansion.jpg"),
     treatment: "washed",
   },
 ];
@@ -136,7 +137,7 @@ export const methodIntro = {
   title: "Built as a clear sequence.",
   summary:
     "The client sees one quiet system of decisions. The complexity stays inside the process, not on the surface.",
-  image: "/images/process-on-site.jpg",
+  image: assetPath("/images/process-on-site.jpg"),
 };
 
 export const methodSteps: MethodStep[] = [
@@ -167,7 +168,7 @@ export const standardsIntro = {
   title: "Premium lives in what stays quiet.",
   summary:
     "Material intelligence, hidden engineering and owner-level reporting define the standard more than decoration ever can.",
-  image: "/images/interior-materials.jpg",
+  image: assetPath("/images/interior-materials.jpg"),
 };
 
 export const standardNotes: StandardNote[] = [
@@ -205,7 +206,7 @@ export const consultationSection = {
   title: "Begin with a precise brief.",
   summary:
     "Share the geography, project type and budget frame. The first response should feel like a concise strategic reading, not a sales script.",
-  image: "/images/cta-detail.jpg",
+  image: assetPath("/images/cta-detail.jpg"),
 };
 
 export const consultationNotes: ConsultationNote[] = [

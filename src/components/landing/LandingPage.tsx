@@ -18,6 +18,7 @@ import {
   standardsIntro,
   standardNotes,
 } from "@/lib/site-content";
+import { assetPath } from "@/lib/asset-path";
 import styles from "@/components/landing/LandingPage.module.css";
 
 export function LandingPage() {
@@ -47,7 +48,7 @@ export function LandingPage() {
                 <div className={styles.mediaWash} />
                 <div className={styles.heroMediaInner} data-parallax>
                   <Image
-                    src="/images/hero-exterior.jpg"
+                    src={assetPath("/images/hero-exterior.jpg")}
                     alt="Astek editorial exterior"
                     width={1180}
                     height={920}
